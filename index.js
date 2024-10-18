@@ -2,7 +2,7 @@ const http = require('http');
 const server = http.createServer((req, res) => {
 	res.statusCode = 200;
 	res.setHeader('Content-Type', 'text/plain');
-	res.end('Hello, Node.js\n');
+	res.end('Hello, Node.js "This is Containerised Application"\n');
 });
 const port= 3001;
 server.listen(port, () => {
