@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 20  # Ensure Docker is available for building images
+
+  pre_build:
+    commands:
+      - echo "Stopping any running Docker containers"
+      - chmod +x scripts/stop_docker_containers.sh
+      - ./scripts/stop_docker_containers.sh
+
+  build:
+    commands:
+      - echo "Building Docker images for frontend and backend"
+      - chmod +x scripts/build_docker_images.sh
+      - ./scripts/build_docker_images.sh
+
+  post_build:
+    commands:
+      - echo "Docker images built successfully and ready for deployment"
+
+artifacts:
+  files:
+    - frontend/**
+    - backend/**
+  discard-paths: no
+
